@@ -31,14 +31,14 @@
                     <!-- 小图标 -->
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required placeholder="请输入用户名" autocomplete="off"
-                        class="layui-input">
+                        class="layui-input" maxlength="10 ">
                 </div>
                 <!-- 密码框的表单项 -->
                 <div class="layui-form-item">
                     <!-- 小图标 -->
                     <i class="layui-icon layui-icon-password"></i>
                     <input type="password" name="password" required placeholder="请输入密码" autocomplete="off"
-                        class="layui-input">
+                        class="layui-input" maxlength="15">
                 </div>
                 <!-- 登录的按钮 -->
                 <div class="layui-form-item">
@@ -60,21 +60,21 @@
                     <!-- 小图标 -->
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required placeholder="请输入用户名" autocomplete="off"
-                        class="layui-input">
+                        class="layui-input" lay-verify="required|usename" maxlength="10">
                 </div>
                 <!-- 密码框的表单项 -->
                 <div class="layui-form-item">
                     <!-- 小图标 -->
                     <i class="layui-icon layui-icon-password"></i>
                     <input type="password" name="password" required placeholder="请输入密码" autocomplete="off"
-                        class="layui-input">
+                        class="layui-input" lay-verify="required|psd">
                 </div>
                 <!-- 确认密码框 -->
                 <div class="layui-form-item">
                     <!-- 小图标 -->
                     <i class="layui-icon layui-icon-password"></i>
                     <input type="password" name="repassword" required placeholder="请再次输入密码" autocomplete="off"
-                        class="layui-input">
+                        class="layui-input" lay-verify="required|psd|repsd">
                 </div>
                 <!-- 登录的按钮 -->
                 <div class="layui-form-item">
@@ -89,7 +89,13 @@
 
         </div>
     </div>
+    <!-- ./代表以当前文件为起点 -->
+    <!-- /代表项目的根路径 -->
     <script src="./assets/lib/jquery.js"></script>
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/axios.js"></script>
+    <!-- 引入通用的js文件 -->
+    <script src="./assets/js/base.js"></script>
     <script src="./assets/js/index.js"></script>
     <script>
 
