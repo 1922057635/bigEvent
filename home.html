@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>大事件管理后台</title>
+    <script>
+        // 吧这个script标签放在head头部，可以让这里的代码在dom渲染之前执行，类似一个拦截器的作用
+        // 主要还是利用客户端js 的时间线，当文档首次加载的时候，会一步一步的从上往下执行，当遇到script的标签的时候，就会停止下来首先执行里面的代码。
+        if (!localStorage.getItem('token')) {
+            location.href = '/index.html';
+        }
+    </script>
     <!-- 导入 layui 的样式表 -->
     <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
     <!-- 导入字体图标的样式 -->
@@ -24,10 +31,7 @@
             <ul class="layui-nav layui-layout-right" lay-filter="header-nav">
                 <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                     <a href="javascript:;" id="header-avatar">
-                        <img src="http://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
-                            class="layui-nav-img">
-                        <div class="text-avatar">A</div>
-                        个人中心
+
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="">基本资料</a></dd>
@@ -47,16 +51,14 @@
             <div class="layui-side-scroll">
                 <!-- 用户的信息区域 -->
                 <div class="user-info-box">
-                    <img src="http://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
-                        class="layui-nav-img">
-                    <div class="text-avatar">A</div>
-                    <span class="welcome">&nbsp;欢迎&nbsp; xxx</span>
+
                 </div>
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="side-nav" lay-shrink="all">
                     <li class="layui-nav-item layui-this">
                         <!-- 一级标题 -->
-                        <a href="javascript:;"><span class="iconfont icon-home"></span>首页</a>
+                        <!-- 通过a标签的target属性就可以吧跳转的页面放置到iframe标签里面，里面值就是iframe标签的name属性值 -->
+                        <a href="/home/dashboard.html" target="fm"><span class="iconfont icon-home"></span>首页</a>
                     </li>
                     <li class="layui-nav-item">
                         <!-- 一级标题 -->
@@ -85,7 +87,10 @@
         <!-- 页面主体区域 -->
         <div class="layui-body">
             <!-- 内容主体区域 -->
-            <div id="container"></div>
+            <div id="container">
+                <!-- src属性是初始化iframe标签 -->
+                <iframe src="/home/dashboard.html" frameborder="0" name="fm"></iframe>
+            </div>
         </div>
 
         <!-- 页面底部区域 -->
@@ -94,6 +99,13 @@
             © www.itheima.com - 黑马程序员
         </div>
     </div>
+    <script src="/assets/lib/jquery.js"></script>
+
+
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/axios.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="./assets/js/home.js"></script>
 </body>
 
 </html>
