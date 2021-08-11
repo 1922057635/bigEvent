@@ -75,3 +75,10 @@ $(function () {
     layui.element.render('nav','header-nav');
   
 }
+
+// 定义一个将侧部导航栏高亮的函数
+function setHeight(kw) {
+    // console.log('kw');
+    $('.layui-nav-tree dd').removeClass('layui-this');
+    $(`.layui-nav-tree dd:contains("${kw}")`).addClass('layui-this');
+}
